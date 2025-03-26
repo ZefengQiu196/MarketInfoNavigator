@@ -1,0 +1,173 @@
+<!--
+MarketInfoNavigator V1.0 
+-->
+
+<!--
+Project introduction 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>MarketInfoNavigator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="public/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="public/stylesheets/style.css" rel="stylesheet">
+    <link href="public/stylesheets/myPagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="public/stylesheets/ion.rangeSlider.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+
+
+</head>
+
+
+<body>
+
+    <!--  libs -->
+    <script src="public/lib/jquery-3.3.1.min.js"></script>
+    <script src="public/lib/d3.min.js"></script>
+    <script src="public/lib/d3-tip.js"></script>
+    <script src="public/lib/bootstrap.bundle.min.js"></script>
+    <script src="public/lib/underscore-min.js"></script>
+    <script src="public/lib/myPagination.js"></script>
+    <script src="public/lib/ion.rangeSlider.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark nav-bg-custom navbar-inverse fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="orange-font">M</span><span class="black-font">arket</span><span
+                    class="orange-font">I</span><span class="black-font">nfo</span><span
+                    class="orange-font">N</span><span class="black-font">avigator</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link nav-text active-custom" href="about.html">Getting started</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link nav-text non-active-custom" href="index.html">Explore</a>
+                    </li>
+                    <!-- <li class="nav-item ">
+                        <a class="nav-link nav-text non-active-custom" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link nav-text non-active-custom" href="updates.html">Updates</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+ 
+        <h2>Introduction to <span style="color: #ec5247;">MarketInfoNavigator</span>:</h2>
+        <p>
+            <strong>MarketInfoNavigator</strong> is a curated collection of <strong>153,335 images</strong> of cannabis products, gathered from <a href="https://www.leafly.com/" target="_blank">Leafly</a> across 20 U.S. states where recreational marijuana dispensaries are legalized.
+        </p>
+
+        <h3>Overview of our interface</h3>
+        <p>Here's an overview of the interface when you navigate to the <strong>'Explore'</strong> tab:</p>
+
+        <p>The navigator is divided into two main sections: the <strong>top query section</strong> 🔍 and the <strong>bottom image gallery</strong> 🖼️.</p>
+
+        <p>Currently, our <strong>MarketInfoNavigator</strong> supports two filtering options: <strong>keywords</strong> and <strong>brands</strong>. You can search for images using product description keywords, product names, or potential strains. Just enter your query and click the <strong>‘Submit’</strong> button to see the results 😊.</p>
+
+        <p>For brand-based filtering, we provide a convenient drop-down menu listing all the product brands we’ve scraped.</p>
+
+        <p>In the image gallery section, the default view displays <strong>200 thumbnails per page</strong>. You can customize this by selecting a different number of images per page using the drop-down menu. You can also adjust the <strong>thumbnail size</strong> using the slider 🎚️ next to the ‘Submit’ button.</p>
+
+        <p>Clicking on any thumbnail 👆 will show you detailed information about that product—check out the example below!</p>
+
+        <div class="timeline-fig-div">
+            
+            <img class="timeline-fig" src="public/images/overview.png">
+        </div>
+        <br>
+        <h3>Click to see detail of image</h3>
+        <p>
+            Once you click any thumbnail, a detailed figure view will pop up. On the left, you’ll see the full-resolution version of the image, and on the right, several corresponding features of the product.
+        </p>
+        
+        <p>
+            ❗ When collecting data from Leafly, if certain features were not available, we used <strong>'NS'</strong> (short for <em>Not Specified</em>) to represent missing values.
+        </p>
+        
+        <p><strong>Explanation of features:</strong><br>
+            - <strong>Product Name</strong>: The name of the product shown in the image<br>
+            - <strong>Brand</strong>: The brand of the product shown in the image<br>
+            - <strong>Category</strong>: One of 8 categories this product belongs to<br>
+            - <strong>Label</strong>: Sub-level information under the Category, provided by the dispensary<br>
+            - <strong>THC</strong>: Delta-9-tetrahydrocannabinol value<br>
+            - <strong>CBD</strong>: Cannabidiol value<br>
+            - <strong>State</strong>: The state where the dispensary is located, from which the product image was collected<br>
+            - <strong>Description</strong>: Detailed description of the product, provided by the dispensary we scraped from
+        </p>
+        <div class="timeline-fig-div">
+            <img class="timeline-fig" src="public/images/detail.png">
+        </div>
+        <br>
+        <br>
+
+        <h2>How are the images distributed over the states and categories?</h2>
+        <p>
+            The bar chart below shows the distribution and total number of collected product images across different states and product categories.
+        </p>
+        
+        <p>
+            There are <strong>8 product categories</strong> provided by Leafly:
+            <em>Accessory</em>, <em>Cartridge</em>, <em>Concentrate</em>, <em>Edible</em>, <em>Flower</em>, <em>PreRoll</em>, <em>Topical</em>, and <em>Other</em>.
+        </p>
+        
+        <p>
+            We collected data from <strong>20 U.S. states</strong> where recreational cannabis is legalized:
+            California, New York, Illinois, Colorado, Montana, Washington, Missouri, Maryland, Alaska, Oregon,
+            Arizona, Maine, Massachusetts, Michigan, Nevada, New Jersey, New Mexico, Rhode Island, Vermont, and Connecticut.
+        </p>
+        
+        <div class="data-stat-div">
+            
+            <div id="total-img-div">
+                <img class="stat-figure" src="public/images/category_state.png">
+            </div>
+
+
+        </div>
+        <br>
+        <br>
+        
+        
+
+
+
+    </div>
+
+    <br>
+
+
+
+    <div id="footer">
+
+        <span style="font-size: 1rem;">Copyright © MarketInfoNavigator Team 2025</span>
+
+    </div>
+
+    <script type="text/javascript" src="public/javascripts/utils.js"></script>
+
+
+</body>
+
+</html>

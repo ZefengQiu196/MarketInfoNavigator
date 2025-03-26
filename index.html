@@ -1,0 +1,552 @@
+<!--
+MarketInfoNavigator V1.0 
+-->
+
+<!--
+The main image browser
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> MarketInfoNavigator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="public/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="public/stylesheets/style.css?3.0.15" rel="stylesheet">
+    <link href="public/stylesheets/myPagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="public/stylesheets/ion.rangeSlider.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+</head>
+
+
+<body>
+
+    
+
+    <!-- fixed-top (stay version) note that body: padding-top: 5rem; -->
+    <nav class="navbar navbar-expand-lg navbar-dark nav-bg-custom navbar-inverse fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="orange-font">M</span><span class="black-font">arket</span><span
+                    class="orange-font">I</span><span class="black-font">nfo</span><span
+                    class="orange-font">N</span><span class="black-font">avigator</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link nav-text non-active-custom" href="getStarted.html">Getting started</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link nav-text active-custom" href="#">Explore</a>
+                    </li>
+
+                    <!-- <li class="nav-item ">
+                        <a class="nav-link nav-text non-active-custom" href="about.html">About</a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link nav-text non-active-custom" href="updates.html">Updates</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <a id="back-to-top-button"></a>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-1">
+
+            </div>
+            <div class="col-10">
+                <div class="form-group form-inline justify-content-center search-bar">
+                    <!-- <a href="http://keyvis.org/index.php" target="_blank"><img src="public/images/keyvisicon2.png" id="keyvis-icon"></a> -->
+                    Query by Terms &nbsp;
+                    <!-- <label>Paper keyword(s) search: </label> &nbsp;&nbsp;&nbsp;&nbsp; -->
+                    <select class="selectpicker" id="searchModeSelect">
+                        <option value="1">in product's description keywords</option>
+                        <option value="2">in name & strain</option>
+                    </select>&nbsp;&nbsp;
+
+                    <div class="autocomplete">
+                        <input id="search-box" type="text" class="form-control search_input"
+                            placeholder="e.g. THC">
+                    </div>
+
+                    <!--        <input id="search-box" type="text" class="form-control search_input" placeholder="e.g. biomedical">&nbsp;&nbsp;&nbsp;&nbsp;-->
+                    <button type="button" id="search-btn" class="btn btn-success">Submit</button>&nbsp;&nbsp;&nbsp;
+                    <!--  -->
+                    <form class="form-inline justify-content-center">
+                        -&nbsp;<input type="range" id="image-size-slider" data-toggle="tooltip" data-html="true"
+                            title="change figure size" class="custom-range" value="25" min="12" max="100" />+
+                    </form>
+                    <img src="public/images/bootstrap_icons/brick.png" class="mode-icon" id="image-mode" data-toggle="tooltip"
+                        data-html="true" title="Figure view"> &nbsp;&nbsp;
+                    <!-- <img src="public/images/bootstrap_icons/card.png" class="mode-icon" id="card-mode" data-toggle="tooltip"
+                        data-html="true" title="Paper Card view"> &nbsp;&nbsp;
+                    <img src="public/images/bootstrap_icons/list.png" class="mode-icon" id="paper-mode" data-toggle="tooltip"
+                        data-html="true" title="Paper view"> &nbsp;&nbsp; -->
+
+
+                </div>
+            </div>
+            <div class="col-1">
+                <div id="visitor-counts">
+                    Visitors: <span id="busuanzi_value_site_uv"></span>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-1">
+
+            </div>
+            <div class="col-10">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="conf-legend-div form-inline">
+                            Brands: &nbsp;
+                            <!-- class="selectpicker" data-live-search="true" -->
+                            <select class="selectpicker" data-live-search="true" id="authors">
+                                <option>All</option>
+
+                            </select> &nbsp; &nbsp;
+                            <!-- <select id="authors"></select> -->
+                            <!-- <div class="visCheck">
+                                <input type="checkbox" name="visOptions" id="vis-check" value="Vis" checked>
+                                <label for="vis-check" id="vis-check-label" style="background-color: #FBAF3F" ;></label>
+                                &nbsp;Vis
+                            </div>
+                            <div class="visCheck">
+                                <input type="checkbox" name="visOptions" id="scivis-check" value="other" checked>
+                                <label for="scivis-check" id="scivis-check-label"
+                                    style="background-color: #1B75BB;"></label> &nbsp;SciVis
+                            </div>
+                            <div class="visCheck">
+                                <input type="checkbox" name="visOptions" id="infovis-check" value="other" checked>
+                                <label for="infovis-check" id="infovis-check-label"
+                                    style="background-color: #EF4036;"></label> &nbsp;InfoVis
+                            </div>
+                            <div class="visCheck">
+                                <input type="checkbox" name="visOptions" id="vast-check" value="other" checked>
+                                <label for="vast-check" id="vast-check-label"
+                                    style="background-color: #38B449;"></label> &nbsp;VAST
+                            </div> -->
+                            <!-- <div id="year-slider" style="width: 24rem; padding-left: 40px; z-index: 5;">
+                                <input type="text" class="js-range-slider" name="my_range" value="" />
+                            </div> -->
+
+
+                        </div>
+
+
+                        <!-- <div class="figure-type-div form-inline">
+                            Image type(s):&nbsp;&nbsp;
+                            <div class="visCheck">
+                                <input type="checkbox" name="figureOptions" id="figure-check" value="other" checked>
+                                <label for="figure-check" id="figure-check-label" style="background-color: #359bd7;"
+                                    ;></label> &nbsp;Figure(s)
+                            </div>
+                            <div class="visCheck">
+                                <input type="checkbox" name="figureOptions" id="table-check" value="other" checked>
+                                <label for="table-check" id="table-check-label" style="background-color: #359bd7;"
+                                    ;></label> &nbsp;Table(s)
+                            </div> -->
+                            <!-- used for algorithms and equations -->
+                            <!-- <div class="visCheck">
+                                <input type="checkbox" name="figureOptions" id="algo-check" value="other" >
+                                <label for="algo-check" id="algo-check-label"
+                                    style="background-color: #fff;border: 1px solid #95a5a6;" ;></label>
+                                &nbsp;Algorithms(s)
+                            </div>
+                            <div class="visCheck">
+                                <input type="checkbox" name="figureOptions" id="equa-check" value="other" > 
+                                <label for="equa-check" id="equa-check-label"
+                                    style="background-color: #fff;border: 1px solid #95a5a6;" ;></label>
+                                &nbsp;Equations(s)
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="rendering-type-div form-inline">
+                            Visualization Types:&nbsp;&nbsp;
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType" id="bar-check"
+                                    value="bar">
+                                <label for="bar-check" id="bar-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="bar-icon" data-toggle="tooltip" data-html="true"
+                                        title="Generalized Bar Chart" src="public/images/icons/bar-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType" id="point-check"
+                                    value="point">
+                                <label for="point-check" id="point-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="point-icon" data-toggle="tooltip" data-html="true"
+                                        title="Point-based Techniques" src="public/images/icons/scatter-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType" id="line-check"
+                                    value="line">
+                                <label for="line-check" id="line-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="line-icon" data-toggle="tooltip" data-html="true"
+                                        title="Line-based Visualization" src="public/images/icons/line-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType" id="node-link-check"
+                                    value="node-link">
+                                <label for="node-link-check" id="node-link-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="node-link-icon" data-toggle="tooltip" data-html="true"
+                                        title="Node-link Trees/Graphs, and Networks, Meshes"
+                                        src="public/images/icons/nodelinkcir-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType" id="area-check"
+                                    value="area">
+                                <label for="area-check" id="area-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="area-icon" data-toggle="tooltip" data-html="true"
+                                        title="Generalized Area Chart" src="public/images/icons/area-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType"
+                                    id="surface-volume-check" value="surface-volume">
+                                <label for="surface-volume-check" id="surface-volume-check-label"
+                                    class="unselected-flat">
+                                    <img class="coding-icon" id="surface-volume-icon" data-toggle="tooltip"
+                                        data-html="true" title="Surface-based Techniques & Volumes"
+                                        src="public/images/icons/surface-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType" id="grid-check"
+                                    value="grid">
+                                <label for="grid-check" id="grid-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="grid-icon" data-toggle="tooltip" data-html="true"
+                                        title="Generalized Matrix / Grid" src="public/images/icons/matrix-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType" id="glyph-check"
+                                    value="glyph">
+                                <label for="glyph-check" id="glyph-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="glyph-icon" data-toggle="tooltip" data-html="true"
+                                        title="Glyph-based Techniques" src="public/images/icons/glyph-0.png" />
+                                </label> &nbsp;
+                            </div>
+
+                            
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType" id="pattern-check"
+                                    value="pattern">
+                                <label for="pattern-check" id="pattern-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="pattern-icon" data-toggle="tooltip" data-html="true"
+                                        title="Continuous-pattern-based Visualization"
+                                        src="public/images/icons/continuous-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType" id="text-check"
+                                    value="text">
+                                <label for="text-check" id="text-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="text-icon" data-toggle="tooltip" data-html="true"
+                                        title="Text-based Encoding" src="public/images/icons/text-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType" id="color-check"
+                                    value="color">
+                                <label for="color-check" id="color-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="color-icon" data-toggle="tooltip" data-html="true"
+                                        title="Continuous color-based encoding" src="public/images/icons/color-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="encodingType" name="encodingType" id="others-check"
+                                    value="others">
+                                <label for="others-check" id="others-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="others-icon" data-toggle="tooltip" data-html="true"
+                                        title="Others" src="public/images/icons/other-0.png" />
+                                </label> &nbsp;
+                            </div>
+
+                            <a id="helper-link" target="_blank" href="https://docs.google.com/document/d/1YlnYs5OHS0VflE6RAWdPX3lRm3iXnRQyo7RKfWrqoV0/edit">
+                                <button type="button" id="query-mode-box-union" class="btn btn-primary btn-circle btn-sm">?</button>
+                            </a>
+                            
+                                
+                             &nbsp;&nbsp; -->
+
+                            <!-- &nbsp; &nbsp; &nbsp;
+                            <div class="radioIcon">
+                                <input type="radio" class="encodingMode" name="encodingMode" id="encodingMode-union"
+                                    value="union">
+                                <label for="encodingMode-union" id="encodingMode-union-label" class="selected-flat">
+                                    <img class="mode-icon" id="encodingMode-union-icon" data-toggle="tooltip"
+                                        data-html="true" title="union" src="public/images/icons/union-1.png" />
+                                </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div> -->
+
+                            <!-- Coders' perceived difficulty level(s): &nbsp;
+                            <select class="selectpicker" id="hardnessSelect">
+                                <option value=""></option>
+                                <option value="two_easy">Two easy</option>
+                                <option value="two_hard">Two hard</option>
+                                <option value="one_hard">One hard</option>
+                                <option value="others">Others</option>
+
+                            </select>&nbsp;&nbsp; -->
+                        </div>
+
+
+                        <!-- <div class="rendering-type-div form-inline">
+                            Dimensionality of the rendering:&nbsp;&nbsp;
+                            <div class="codingType">
+                                <input type="checkbox" class="dimType" name="dimType" id="2d-check" value="2d">
+                                <label for="2d-check" id="2d-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="2d-icon" data-toggle="tooltip" data-html="true"
+                                        title="2D" src="public/images/icons/2D-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="dimType" name="dimType" id="3d-check" value="3d">
+                                <label for="3d-check" id="3d-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="3d-icon" data-toggle="tooltip" data-html="true"
+                                        title="3D" src="public/images/icons/3D-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="dimType" name="dimType" id="othersdim-check"
+                                    value="othersdim">
+                                <label for="othersdim-check" id="othersdim-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="othersdim-icon" data-toggle="tooltip" data-html="true"
+                                        title="I cannot tell" src="public/images/icons/cannottell-0.png" />
+                                </label> &nbsp;
+                            </div>
+
+                            &nbsp; &nbsp; &nbsp;
+                            <div class="radioIcon">
+                                <input type="radio" class="dimMode" name="dimMode" id="dimMode-union" value="union">
+                                <label for="dimMode-union" id="dimMode-union-label" class="selected-flat">
+                                    <img class="mode-icon" id="dimMode-union-icon" data-toggle="tooltip"
+                                        data-html="true" title="union" src="public/images/icons/union-1.png" />
+                                </label> &nbsp;
+                            </div>
+
+                        </div> -->
+
+                        <!-- <div class="rendering-type-div form-inline">
+                            Functional Types:&nbsp;&nbsp;
+                            <div class="codingType">
+                                <input type="checkbox" class="functionType" name="functionType" id="schematic-check"
+                                    value="schematic">
+                                <label for="schematic-check" id="schematic-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="schematic-icon" data-toggle="tooltip" data-html="true"
+                                        title="Schematic rep., sche. imgs., sche. concept illu."
+                                        src="public/images/icons/flowchart-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="functionType" name="functionType" id="gui-check"
+                                    value="gui">
+                                <label for="gui-check" id="gui-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="gui-icon" data-toggle="tooltip" data-html="true" title="GUI (Screenshots) / User Interface Depiction
+                                        " src="public/images/icons/GUI-0.png" />
+                                </label> &nbsp;
+                            </div> -->
+
+                            <!-- &nbsp; &nbsp; &nbsp;
+                            <div class="radioIcon">
+                                <input type="radio" class="dimMode" name="dimMode" id="dimMode-union" value="union">
+                                <label for="dimMode-union" id="dimMode-union-label" class="selected-flat">
+                                    <img class="mode-icon" id="dimMode-union-icon" data-toggle="tooltip"
+                                        data-html="true" title="union" src="public/images/icons/union-1.png" />
+                                </label> &nbsp;
+                            </div> -->
+                            
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+
+
+                </div>
+
+            
+
+                <hr>
+                <div class="row">
+                    <div class="col-12 gray-font" style="font-size:0.5rem;">
+                        © 2020 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained
+                        for all other uses, in any current or future media, including reprinting/republishing this
+                        material for advertising or promotional purposes, creating new collective
+                        works, for resale or redistribution to servers or lists, or reuse of any copyrighted component
+                        of this work in other works.
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-1">
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div id="pagination" class="pagination"></div>
+        </div>
+        <div class="container">
+
+
+
+        </div>
+
+        <div id="timeline-div" class="">
+            <!-- <button type="button" id="capture-papercard" class="btn btn-outline-secondary btn-sm">capture my journey!</button> -->
+            <!-- why there is a space between two inline divs: -->
+            <!-- https://stackoverflow.com/questions/19038799/why-is-there-an-unexplainable-gap-between-these-inline-block-div-elements -->
+            <div class="horizontal-timeline" id="horizontal-timeline-div">
+
+                <div class="opacity-overlay"></div>
+                <div class="timeline" id="timeline-container">
+
+
+                </div>
+            </div>
+
+        </div>
+
+       
+
+        <div id="image-gallery" class="row text-center text-lg-left">
+
+        </div>
+        <!-- The Modal to show original img-->
+        <!-- The code is adpated from https://www.w3schools.com/howto/howto_css_modals.asp -->
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <div class="container" style="width: 100%; height: 90%">
+                <div class="row" style="height: 95%;">
+                    <div class="col-md-8" style="height: 90%;">
+                        <div id="img-box">
+                            <div class="imageContainer magnify-img" id="vis-img-box">
+                                <img class="origin-img" id="ori-img" src="">
+                            </div>
+                        </div>
+
+
+                        <!-- <img class="modal-content" id="ori-img"> -->
+                        <!-- <div class="ori-img-container">
+                            
+                        </div> -->
+                    </div>
+                    <div class="col-md-4" style="height: 90%;">
+                        <div class="meta-info">
+                            <span class="blue-font">Product Name: </span><span id="paper-info" class="caption"></span><br>
+                            <span class="blue-font">Brand: </span><span id="author-info" class="caption"></span><br>
+
+                            <span class="blue-font">Category: </span><span id="category-info" class="caption"></span><br>
+                            <span class="blue-font">Label: </span><span id="label-info" class="caption"></span><br>
+                            <span class="blue-font">THC: </span><span id="thc-info" class="caption"></span><br>
+                            <span class="blue-font">CBD: </span><span id="cbd-info" class="caption"></span><br>
+                            <span class="blue-font">State: </span><span id="state-info" class="caption"></span><br>
+
+                            <!-- <span class="blue-font">Journal: </span><span id="journal-info" class="caption">
+                                    IEEE Transactions on Visualization and Computer Graphics</span><br> -->
+                            <!-- <span class="blue-font">Year: </span><span id="year-info" class="caption"></span><br> -->
+                            <!-- <span class="blue-font">Paper URL : </span>
+                            <a id="link-info" class="caption" target="blank"></a><br> -->
+                            <!-- <span class="blue-font">Paper Type: </span><span id="paper-type-info"
+                                class="caption"></span><br> -->
+                            <span class="blue-font">Description: </span><span id="keyword-info"
+                                class="caption"></span><br>
+                            <span class="gray-font">Imagename: </span><span id="imagename-info"
+                                class="caption"></span><br>
+                            <!-- <a id="email-btn" href=""><button class="btn btn-secondary btn-sm">Update this
+                                    image</button></a> -->
+                            <!-- <input type="submit" class="btn btn-secondary btn-sm" id="mail-submit" value="Report Image Error"></button>
+                            <form id="send-mail-form" enctype="text/plain" action="mailto:chen.8028@osu.edu" method="GET">
+                                <input name="subject" id="mail-subject" type="text" />
+                                <input name="body" id="mail-body"></input>
+                                <input type="submit" class="btn btn-secondary btn-sm" id="mail-submit" value="Report Image Error"></button>
+                            </form> -->
+                        </div>
+                    </div>
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4">
+                        <button class="btn btn-light" style="left: 60%; position: relative;" id="modal-previous">
+                            < </button>
+
+                                <button class="btn btn-light" style="left: 60%; position: relative;"
+                                    id="modal-next">></button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- show other images-->
+            <div class="container">
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="public/lib/jquery-3.3.1.min.js"></script>
+    <script src="public/lib/d3.min.js"></script>
+    <script src="public/lib/d3-tip.js"></script>
+    <script src="public/lib/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="public/lib/myPagination.js"></script>
+    <script src="public/lib/ion.rangeSlider.js"></script>
+
+
+    <script type="text/javascript" src="public/javascripts/constant.js?v3.0.3"></script>
+    <script type="text/javascript" src="public/javascripts/vis_global.js?v3.0.16"></script>
+    <script type="text/javascript" src="public/javascripts/utils.js?v3.0.1"></script>
+    <script type="text/javascript" src="public/javascripts/image_filter.js?v3.0.16"></script>
+    <script type="text/javascript" src="public/javascripts/vis_show_images.js?V1.0.0"></script>
+
+
+</body>
+
+</html>
