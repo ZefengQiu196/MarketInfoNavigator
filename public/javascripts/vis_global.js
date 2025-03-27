@@ -473,17 +473,17 @@ async function dbStart() {
 
 
     //switch mode, image mode or paper mode
-    $('#image-mode').unbind('click').click(function () { });
-    $("#image-mode").click(function () {
-        visMode = 1;
-        ifAllImage = 1;
-        $("#image-mode").css('border', 'solid 2px #333');
-        $("#card-mode").css('border', '0px');
-        $("#paper-mode").css('border', '0px');
-        filterData();
+    // $('#image-mode').unbind('click').click(function () { });
+    // $("#image-mode").click(function () {
+    //     visMode = 1;
+    //     ifAllImage = 1;
+    //     $("#image-mode").css('border', 'solid 2px #333');
+    //     $("#card-mode").css('border', '0px');
+    //     $("#paper-mode").css('border', '0px');
+    //     filterData();
 
 
-    });
+    // });
     $('#paper-mode').unbind('click').click(function () { });
     $("#paper-mode").click(function () {
         visMode = 2;

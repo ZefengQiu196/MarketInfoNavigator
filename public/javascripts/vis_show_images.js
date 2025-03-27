@@ -219,14 +219,25 @@ function presentImg(imgData, showAnnotation, sortedKey = 0, imgSize = 1, current
         } else {
             $('#ori-img').attr('class', 'origin-img-tall');
         }
+
+        category_info.innerHTML = imgData[gIndex]['Category'];
+        label_info.innerHTML = imgData[gIndex]['Label']; 
+        thc_info.innerHTML = imgData[gIndex]['THC']; 
+        cbd_info.innerHTML = imgData[gIndex]['CBD']; 
+        state_info.innerHTML = imgData[gIndex]['State']; 
+        
+
         paper_info.innerHTML = imgData[gIndex]['Paper Title'];
         author_info.innerHTML = imgData[gIndex]['Author'].replace(/;/g, '; ');
-        link_info.href = imgData[gIndex]['paper_url'];
-        link_info.innerHTML = imgData[gIndex]['paper_url'];
-        year_info.innerHTML = imgData[gIndex]['Year'];
-        type_info.innerHTML = imgData[gIndex]['Paper type'];
+        // link_info.href = imgData[gIndex]['paper_url'];
+        // link_info.innerHTML = imgData[gIndex]['paper_url'];
+        // year_info.innerHTML = imgData[gIndex]['Year'];
+        // type_info.innerHTML = imgData[gIndex]['Paper type'];
 
-       
+        
+        
+        
+        
 
 
         let urlArr = imgData[gIndex].url.split('/');
